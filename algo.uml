@@ -1,0 +1,43 @@
+@startuml
+
+class MapaCartografico{
+-nombre: string
+-descripcion: string
+-imagen: string
+-categoria: Categoria
+-fechaIncio: Date
+-fechaFin: Date
+-region: Region
+-creador:Creador
+-listaNotas:<Nota>
+-urlImagen:String
++agregarNota(nota)
+}
+
+class Nota{
+    -contenido:String
+}
+
+class Categoria{
+ -descripcion:String
+}
+
+class Region{
+ -nombre:String
+}
+
+class Creador{
+-username:String
+-imagenPerfil:String
+-mail:String
+-X_twitter: String
+-instagram: String
+}
+
+MapaCartografico *-->Categoria
+MapaCartografico *-->Region
+MapaCartografico *-->Creador
+MapaCartografico -->"*" Nota
+
+
+@enduml
