@@ -35,9 +35,21 @@ class MapaCartografico {
   }
 
   agregarNota(contenido) {
-    if (!contenido || contenido.trim() === "")
+    let texto = contenido;
+
+    if (contenido instanceof Nota) {
+      this.notas.push(contenido);
+      return;
+    }
+
+    if (typeof contenido === "object" && contenido !== null) {
+      texto = contenido.contenido;
+    }
+
+    if (typeof texto !== "string" || texto.trim() === "")
       throw new DomainError("El contenido de la nota no puede estar vacío.");
-    const nota = new Nota({ contenido });
+
+    const nota = new Nota({ contenido: texto });
     this.notas.push(nota);
   }
 
@@ -64,7 +76,7 @@ class MapaCartografico {
 
   cambiarFechas(inicio, fin) {
     if (inicio && fin && new Date(inicio) > new Date(fin))
-      throw new DomainError("La fecha de inicio no puede ser posterior a la de fin.");
+      throw new DomainError("La fecha de fin no puede ser anterior a la de inicio.");
     this.fechaInicio = inicio;
     this.fechaFin = fin;
   }
