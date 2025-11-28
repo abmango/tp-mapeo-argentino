@@ -1,8 +1,9 @@
-import { Box } from "@mui/material";
+import Box from "@mui/material/Box";
 import CardMap from "../component/Cart/Cart";
 import Header from "../component/Headers/Header";
 import WelcomePageImage from "../component/Images/SanMartinImagen";
 import FooterPage from "../component/Footers/FooterPage";
+import Grid from "@mui/material/Grid";
 
 export default function Home() {
 
@@ -14,32 +15,33 @@ export default function Home() {
     {/* Cards de mapas */}
     <Box
       sx={{
-        display: "grid",
-        gap: 4,
         mt: 4,
         pt: 2,
         pl: 7,
         pr: 7,
         pb: 5,
-
-        gridTemplateColumns: {
-          xs: "repeat(1, 1fr)",     // Celular
-          sm: "repeat(2, 1fr)",     // Tablet pequeña
-          md: "repeat(3, 1fr)",     // Tablet grande (ponele)
-          lg: "repeat(4, 1fr)",     // Desktop 
-        },
-
-        justifyItems: "center",
+        justifyItems: "center"
       }}
     >
-      <CardMap />
-      <CardMap />
-      <CardMap />
-      <CardMap />
-      <CardMap />
-      <CardMap />
-      <CardMap />
-      <CardMap />
+
+      {/* xs: extra small, sm: small, md: medium, lg: large*/}
+
+      <Grid 
+        container 
+        spacing={{xs: 3, sm: 3, md: 3, lg:5}}  //Espacio entre cards segun tamaño de pantalla
+        columns={{xs: 1, sm: 2, md: 3, lg: 4}} //Nro de columnas segun tamaño pantalla
+        justifyContent="center">
+        
+        <CardMap />
+        <CardMap />
+        <CardMap />
+        <CardMap />
+        <CardMap />
+        <CardMap />
+        <CardMap />
+        <CardMap />
+      
+      </Grid>
     </Box>
     
     {/* Imagen + texto descriptivo */}
@@ -47,7 +49,7 @@ export default function Home() {
     <Box
       sx={{
         display: "flex",
-        flexDirection: { xs: "column", md: "row" }, // 🔹 Mobile: columna | Desktop: fila
+        flexDirection: { xs: "column", md: "row" }, // Mobile: columna | Desktop: fila
         alignItems: "center",
         justifyContent: "center",
         gap: 6,
@@ -59,7 +61,7 @@ export default function Home() {
       {/* IMAGEN A LA IZQUIERDA */}
       <Box
         component="img"
-        src="/HomeImages/image.png"  // 👉 cambia ruta si hace falta
+        src="/HomeImages/image.png"  //
         alt="Dato curioso"
         sx={{
           width: { xs: "100%", md: "45%" },
