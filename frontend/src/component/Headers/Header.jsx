@@ -3,7 +3,6 @@ import Toolbar from '@mui/material/Toolbar';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Avatar from '@mui/material/Avatar';
-import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
 import Drawer from '@mui/material/Drawer';
 import List from '@mui/material/List';
@@ -11,6 +10,7 @@ import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemText from '@mui/material/ListItemText';
 import useMediaQuery from '@mui/material/useMediaQuery';
+import { Link as RouterLink } from 'react-router-dom';
 import Link from '@mui/material/Link';
 import '@fontsource/roboto/700.css';
 
@@ -45,9 +45,22 @@ export default function Header() {
             px: 3,
           }}
         >
-          <Typography variant="h5" sx={{ fontWeight: "bold" , fontSize: isMobile? 20 : 30}}>
-            COMUNIDAD DEL MAPEO ARGENTINA
-          </Typography>
+          <Link
+            href="/"
+            underline="none"
+            color="inherit"
+            sx={{ cursor: "pointer" }}
+          >
+            <Typography
+              variant="h5"
+              sx={{
+                fontWeight: "bold",
+                fontSize: isMobile ? 20 : 30
+              }}
+            >
+              COMUNIDAD DEL MAPEO ARGENTINA
+            </Typography>
+          </Link>
 
           {!isMobile && (
             <Box
@@ -57,13 +70,13 @@ export default function Header() {
                 gap: 3,
               }}
             >
-              <Link component='button' underline='none' color='inherit' href='/nosotros' fontFamily='roboto' fontSize='20px'>
+              <Link component={RouterLink} underline='none' color='inherit' to='/nosotros' fontFamily='roboto' fontSize='20px'>
                 NOSOTROS
               </Link>
-              <Link component='button' underline='none' color='inherit' href='/nuevo' fontFamily='roboto' fontSize='20px'>
+              <Link component={RouterLink} underline='none' color='inherit' to='/nuevo' fontFamily='roboto' fontSize='20px'>
                 NUEVO
               </Link>
-              <Link component='button' underline='none' color='inherit' href='/categorias' fontFamily='roboto' fontSize='20px'>
+              <Link component={RouterLink} underline='none' color='inherit' to='/categorias' fontFamily='roboto' fontSize='20px'>
                 CATEGORÍAS
               </Link>
               <Avatar sx={{ ml: 2 }} />
