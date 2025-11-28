@@ -11,8 +11,11 @@ import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemText from '@mui/material/ListItemText';
 import useMediaQuery from '@mui/material/useMediaQuery';
+import Link from '@mui/material/Link';
+import '@fontsource/roboto/700.css';
 
 import { useState } from 'react';
+
 
 import MenuIcon from '@mui/icons-material/Menu';
 
@@ -54,16 +57,15 @@ export default function Header() {
                 gap: 3,
               }}
             >
-              <Button color="inherit" sx={{ fontSize: 20 }}>
+              <Link component='button' underline='none' color='inherit' href='/nosotros' fontFamily='roboto' fontSize='20px'>
                 NOSOTROS
-              </Button>
-              <Button color="inherit" sx={{ fontSize: 20 }}>
-                CATEGORÍAS
-              </Button>
-              <Button color="inherit" sx={{ fontSize: 20 }}>
+              </Link>
+              <Link component='button' underline='none' color='inherit' href='/nuevo' fontFamily='roboto' fontSize='20px'>
                 NUEVO
-              </Button>
-
+              </Link>
+              <Link component='button' underline='none' color='inherit' href='/categorias' fontFamily='roboto' fontSize='20px'>
+                CATEGORÍAS
+              </Link>
               <Avatar sx={{ ml: 2 }} />
             </Box>
           )}
@@ -91,7 +93,7 @@ export default function Header() {
 
           <List>
             <ListItem disablePadding>
-              <ListItemButton>
+              <ListItemButton component='a' href="/nosotros">
                 <ListItemText primary="Nosotros" />
               </ListItemButton>
             </ListItem>
