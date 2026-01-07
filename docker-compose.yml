@@ -1,0 +1,49 @@
+version: "3.9"
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: docker/php/Dockerfile
+    container_name: mapeo_app
+    volumes:
+      - .:/var/www/html
+    ports:
+      - "8080:80"
+    depends_on:
+      - db
+    environment:
+      APACHE_DOCUMENT_ROOT: /var/www/html/public
+
+  db:
+    image: mysql:8.0
+    container_name: mapeo_db
+    command: --ssl=0
+    restart: always
+    environment:
+      MYSQL_DATABASE: mapeo_argentino
+      MYSQL_USER: mapeo
+      MYSQL_PASSWORD: secret
+      MYSQL_ROOT_PASSWORD: root
+    volumes:
+      - db_data:/var/lib/mysql
+    ports:
+      - "${DB_PORT}:3306"
+  
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: mapeo_phpmyadmin
+    restart: always
+    ports:
+      - "8081:80"
+    environment:
+      PMA_HOST: db
+      PMA_PORT: 3306
+      PMA_USER: mapeo
+      PMA_PASSWORD: secret
+    depends_on:
+      - db
+
+
+volumes:
+  db_data:
