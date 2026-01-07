@@ -28,7 +28,7 @@ services:
     volumes:
       - db_data:/var/lib/mysql
     ports:
-      - "${DB_PORT}:3306"
+      - "${PORT_MYSQL}:3306"
   
   phpmyadmin:
     image: phpmyadmin/phpmyadmin
