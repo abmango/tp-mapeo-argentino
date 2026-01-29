@@ -20,7 +20,7 @@ return new class extends Migration
             
             // Claves foráneas
             $table->uuid('categoria_id');
-            $table->string('region'); // Será una región de Argentina (enum)
+            $table->string('region_id');
 
             $table->date('fecha_inicio');
             $table->date('fecha_fin');

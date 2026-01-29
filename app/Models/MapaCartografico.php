@@ -8,7 +8,6 @@ use App\Models\Categoria;
 use App\Models\Region;
 use App\Models\User;
 use App\Models\Nota;
-use App\Enums\RegionArgentina;
 
 class MapaCartografico extends Model
 {
@@ -21,18 +20,12 @@ class MapaCartografico extends Model
         'categoria_id',
         'fecha_inicio',
         'fecha_fin',
-        'region',
+        'region_id',
         'creador_id',
         'url_imagen',
     ];
 
-    protected $casts = [
-        'region' => RegionArgentina::class,
-    ];
-
     // Relaciones
-    
-
     public function creador()
     {
         return $this->belongsTo(User::class);

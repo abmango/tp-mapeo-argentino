@@ -4,17 +4,13 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Model;
-use App\Enums\RegionArgentina;
+use App\Models\MapaCartografico;
 
 class Region extends Model
 {
     use HasUuids;
 
     protected $fillable = ['nombre'];
-
-    protected $casts = [
-        'nombre' => RegionArgentina::class,
-    ];
 
     public function mapasCartograficos()
     {
